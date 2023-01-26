@@ -73,6 +73,9 @@ const getElements = (path) => {
     .readdirSync(path)
     .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
     .map((i, index) => {
+      if (i.includes("-")) {
+        throw new Error(`layer name can not contain dashes, please fix: ${i}`);
+      }
       return {
         id: index,
         name: cleanName(i),
@@ -136,7 +139,7 @@ const addMetadata = (_dna, _edition) => {
     edition: _edition,
     ...extraMetadata,
     date: dateTime,
-    compiler: "HashLips Art Engine - codeSTACKr Modified",
+    compiler: "HashLips Art Engine",
   };
   if (network == NETWORK.sol) {
     tempMetadata = {
@@ -170,17 +173,23 @@ const addMetadata = (_dna, _edition) => {
 
 const addAttributes = (_element) => {
   let selectedElement = _element.layer.selectedElement;
+  if(selectedElement.name.trim().toLowerCase() !== "blank") {
   attributesList.push({
     trait_type: _element.layer.name,
     value: selectedElement.name,
   });
+ } 
 };
 
 const loadLayerImg = async (_layer) => {
-  return new Promise(async (resolve) => {
-    const image = await loadImage(`${_layer.selectedElement.path}`);
-    resolve({ layer: _layer, loadedImage: image });
-  });
+  try {
+    return new Promise(async (resolve) => {
+      const image = await loadImage(`${_layer.selectedElement.path}`);
+      resolve({ layer: _layer, loadedImage: image });
+    });
+  } catch (error) {
+    console.error("Error loading image:", error);
+  }
 };
 
 const addText = (_sig, x, y, size) => {

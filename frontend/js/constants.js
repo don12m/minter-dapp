@@ -1,9 +1,9 @@
-const contractAddress = "YOUR CONTRACT ADDRESS"; // Replace with your own contract address
-const chain = 'goerli'; // goerli, polygon, or ethereum
+const contractAddress = "0x4aF11dBa58064f47DCc3A62c7dd3Bf26Ade9ee9D"; // Replace with your own contract address
+const chain = 'polygon'; // goerli, polygon, or ethereum
 
-const welcome_h1 = "Welcome to the CodeCats NFT Project!!";
-const welcome_h2 = "Connect to MetaMask to Get Started";
-const welcome_p = 'The CodeCats NFT Project is a decentralized, open-source project that aims to demonstrate how to develope and launch your own NFT Collection. Follow step by step on the <a href="https://youtube.com/codestackr"  target="_blank" rel="noopener noreferrer">codeSTACKr</a> YouTube channel.';
+const welcome_h1 = "Join,Mint, and Trade the revolution";
+const welcome_h2 = null;
+const welcome_p = 'Welcome to our next-generation Ethereum-based game assets, tailored for the gaming community with the capability of minting and trading. These assets will be utilized in a revolutionary decentralized open-world game built on the Ethereum blockchain technology.';
 const h1_presale_coming_soon = "NFT Drop Coming Soon!!";
 const h1_presale_mint = "Pre-Sale Minting Open!!";
 const h1_public_mint = "Public Minting Open!!";
